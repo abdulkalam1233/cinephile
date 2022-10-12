@@ -12,3 +12,8 @@ netty:
     allocator:
       max-order: 3
 jpa.default.properties.hibernate.hbm2ddl.auto: none
+jpa:
+  default:
+    entity-scan:
+      packages:
+        - 'incubyte.co'
