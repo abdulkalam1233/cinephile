@@ -1,6 +1,5 @@
 package com.incubyte.movie;
 
-import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -17,7 +16,15 @@ class MovieControllerShould {
   @DisplayName("should invoke service find method")
   void should_invoke_service_find_method() {
     MovieController movieController = new MovieController(service);
-    List<Movie> movies = movieController.find("Maverick");
+    movieController.find("Maverick");
     Mockito.verify(service).find("Maverick");
+  }
+
+  @Test
+  @DisplayName("should invoke service find get movie details method")
+  void should_invoke_service_find_get_movie_details_method() {
+    MovieController movieController = new MovieController(service);
+    movieController.getById(123);
+    Mockito.verify(service).getById(123);
   }
 }

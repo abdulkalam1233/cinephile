@@ -18,4 +18,8 @@ public class MovieService {
     TmbdResponse tmbdResponse = movieGateWay.find(movie);
     return tmbdResponse == null ? Collections.emptyList() : tmbdResponse.results();
   }
+
+  public Movie getById(int id) {
+    return movieGateWay.getById(id);
+  }
 }

@@ -32,5 +32,23 @@ class MovieControllerTest {
     assertThat(movies.get(0).getDate()).isEqualTo("2022-05-24");
     assertThat(movies.get(0).getRating()).isEqualTo(8.4f);
     assertThat(movies.get(0).getRatingCount()).isPositive();
+    assertThat(movies.get(0).getId()).isEqualTo(361743);
+  }
+
+  @Test
+  @DisplayName("Get movie details by id")
+  void get_movie_details_by_id() {
+    Movie movie = httpClient.toBlocking().retrieve(HttpRequest.GET("/361743"), Movie.class);
+    assertThat(movie.getName()).isEqualTo("Top Gun: Maverick");
+    assertThat(movie.getImage()).isEqualTo("/62HCnUTziyWcpDaBO2i1DX17ljH.jpg");
+    assertThat(movie.getDate()).isEqualTo("2022-05-24");
+    assertThat(movie.getRating()).isEqualTo(8.357f);
+    assertThat(movie.getRatingCount()).isPositive();
+    assertThat(movie.getDuration()).isPositive();
+    assertThat(movie.getDescription().length()).isGreaterThan(0);
+    assertThat(movie.getRevenue()).isPositive();
+    assertThat(movie.getLanguage()).isEqualTo("en");
+    assertThat(movie.getBackDrop()).isEqualTo("/odJ4hx6g6vBt4lBWKFD1tI8WS4x.jpg");
+    assertThat(movie.getId()).isEqualTo(361743);
   }
 }

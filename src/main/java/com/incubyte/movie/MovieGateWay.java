@@ -10,14 +10,23 @@ import jakarta.inject.Inject;
 public class MovieGateWay {
 
   @Inject
-  @Client("https://api.themoviedb.org/3/search/movie")
+  @Client("https://api.themoviedb.org/3")
   HttpClient httpClient;
 
   public TmbdResponse find(String query) {
     return httpClient
         .toBlocking()
         .retrieve(
-            HttpRequest.GET("?api_key=e470560acfb347655d8af373c29aba11&query=" + query),
+            HttpRequest.GET(
+                "/search/movie?api_key=e470560acfb347655d8af373c29aba11&query=" + query),
             TmbdResponse.class);
+  }
+
+  public Movie getById(int id) {
+    return httpClient
+        .toBlocking()
+        .retrieve(
+            HttpRequest.GET("/movie/" + id + "?api_key=e470560acfb347655d8af373c29aba11"),
+            Movie.class);
   }
 }
