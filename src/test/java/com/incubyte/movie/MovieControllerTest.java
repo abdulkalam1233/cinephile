@@ -42,7 +42,7 @@ class MovieControllerTest {
     assertThat(movie.getName()).isEqualTo("Top Gun: Maverick");
     assertThat(movie.getImage()).isEqualTo("/62HCnUTziyWcpDaBO2i1DX17ljH.jpg");
     assertThat(movie.getDate()).isEqualTo("2022-05-24");
-    assertThat(movie.getRating()).isEqualTo(8.357f);
+    assertThat(movie.getRating()).isPositive();
     assertThat(movie.getRatingCount()).isPositive();
     assertThat(movie.getDuration()).isPositive();
     assertThat(movie.getDescription().length()).isGreaterThan(0);
